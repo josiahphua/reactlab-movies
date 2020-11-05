@@ -44,7 +44,7 @@ Since you aren't using this anywhere yet, nothing should change.
 
 #### Step 3: Add an `onClick` in `Fave`
 
-Now that you have a function that handles the user clicking a movie, connect it to the UI. In the `div` of `Fave`'s `render` function, add a parameter of `onClick={this.handleClick}`.
+Now that you have a function that handles the user clicking a movie, connect it to the UI. In the `div` of `Fave`'s `return`, add a parameter of `onClick={handleClick}`.
 
 In your browser's JavaScript console, you should see the message `handleClick` prints out when the `div` is clicked.
 
@@ -97,7 +97,7 @@ Add an `onClick` inside `FilmListing` so that when "FAVES" is clicked, it calls 
 <details>
   <summary>Hint</summary>
   This will look like this:
-  <code>onClick={() => this.handleFilterClick('faves')}</code>
+  <code>onClick={() => handleFilterClick('faves')}</code>
 </details>
 
 
@@ -140,28 +140,32 @@ Try clicking the Fave icon/button - there's only one message now.
 
 You have now triggered the events you'll need to update your app. Next, you'll add states to your app - data in your React app that will change (like if the user adds a film to the Faves list)
 
-#### Step 1: Create a constructor for the `Fave` component
+#### Step 1: Create a state for the `Fave` component
 
 The first state you'll add will be whether a currently selected film is a user's favorite.
 
-Add a constructor method to the `Fave` component. Remember that any time you add a constructor to a class-based component, you have to call the `super` method (and pass it `props`).
+To add a state import `useState` into your fave component.
+
 
 
 #### Step 2: Set the initial state
 
 By default, a film is not a user's favorite.
 
-Back to the `Fave` component, set `this.state` to an object with the key `isFave` and the value `false`. This will set up the initial state of the component.
+Back to the `Fave` component, set `state` name to `isFave` and setter function to `setIsFave` and the initial value `false`. This will set up the initial state of the component.
 
+```javascript
+  const [isFave, setIsFave] = useState(false)
+```
 #### Step 3: Set the state in your event handler
 
 When the user clicks the Fave icon/button to add or remove a film from their favorites list, the app should change the film's `isFave` state to reflect that.
 
-Inside of the `handleClick` method on the `Fave` component, use `this.setState` to toggle the value of `isFave`. "Toggle" means you always want to set the new value to the opposite of the current value.
+Inside of the `handleClick` method on the `Fave` component, use `setIsFave` to toggle the value of `isFave`. "Toggle" means you always want to set the new value to the opposite of the current value.
 
 <details>
   <summary>Hint - one way to do this could be:</summary>
-  <code>isFave: !this.state.isFave</code>
+  <code>!isFave</code>
 </details>
 
 
@@ -178,7 +182,7 @@ Note: It will be easier to read if you determine which class to set first, store
 
 <details>
   <summary>Hint - a more advanced and succinct way to write this function could be:</summary>
-  <code>const isFave = (this.state.isFave) ? 'remove_from_queue' : 'add_to_queue'</code>
+  <code>const isFave = (isFave) ? 'remove_from_queue' : 'add_to_queue'</code>
 
   You can drop this in the <code>render</code> method. This checks the current <code>isFave</code> state for true or false.
 
@@ -195,13 +199,13 @@ Currently, you have the ALL and FAVE headings, but all films are always shown. N
 
 By default, a user will be viewing the entire list of movies.
 
-In the `FilmListing` component, set `this.state` to an object with the key `filter` and the value `all`. This will set up the initial state of the component.
+In the `FilmListing` component, set `state` name to `filter` and the initial value to `all`. This will set up the initial state of the component.
 
 #### Step 2: Set the state in your event handler
 
 The `handleFilterClick` method is the one that's called when a user clicks ALL or FAVES, so it's where you'll change the filter.
 
-Inside of the `handleFilterClick` method on the `FilmListing` component, use `this.setState` to set the value of `filter` to the value passed to the event handler.
+Inside of the `handleFilterClick` method on the `FilmListing` component, use `setFilter` to set the value of `filter` to the value passed to the event handler.
 
 #### Step 3: Set the className on div based on filter state
 
@@ -211,14 +215,14 @@ You now want the `className` attribute on each `.film-list-filter` `div` to dyna
 
 <details>
   <summary>Hint - one way to do this could be by adding a line similar to this (different for each <code>div</code>) into the <code>className</code> parameter:</summary>
-  This line in particular checks if the <code>filter</code> state is currently "all"; if it is, it sets the value to <code>is-active</code>. If it isn't, it does nothing. <code>{this.state.filter === 'all' ? 'is-active' : ''}</code>
+  This line in particular checks if the <code>filter</code> state is currently "all"; if it is, it sets the value to <code>is-active</code>. If it isn't, it does nothing. <code>{filter === 'all' ? 'is-active' : ''}</code>
 </details>
 
 <details>
   <summary>Still stuck? The overall <code>div</code> for "ALL" will look like this:</summary>
   
   ```
-  <div className={`film-list-filter ${this.state.filter === 'all' ? 'is-active' : ''}`} onClick={() => this.handleFilterClick('all')}>
+  <div className={`film-list-filter ${filter === 'all' ? 'is-active' : ''}`} onClick={() => handleFilterClick('all')}>
   ```
 
 (Don't forget to change it for the other <code>div</code>).
