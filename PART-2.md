@@ -10,15 +10,26 @@ Your goal today is to add some events to your app. You'll keep the events simple
 ![](images/film-2.png)
 
 ### Tasks - Part 1: Adding Favorites
+Install the follow for the icons to appear:
+```bash
+npm install @material-ui/core
+
+npm install @material-ui/icons
+```
 
 #### Step 1: Add a new `Fave` component
 
-Create a new component called `Fave` that will eventually handle whether a movie is a user's favorite. The `Fave` component's `render` method should return the following:
+Create a new component called `Fave` that will eventually handle whether a movie is a user's favorite. The `Fave` component should return the following:
 
 ```html
 <div className="film-row-fave add_to_queue">
-  <p className="material-icons">add_to_queue</p>
+  <p className="material-icons"><AddToQueue /> </p>
 </div>
+```
+
+At the top of the fave component, import the following:
+```js
+import { AddToQueue, RemoveFromQueue } from "@material-ui/icons";
 ```
 
 In the `FilmRow` component, underneath the `film-summary` `div`, render the `Fave` component.
@@ -63,7 +74,7 @@ Change the `FilmListing` component to render this:
     <div className="film-list-filters">
         <div className="film-list-filter">
             ALL
-            <span className="section-count">{this.props.films.length}</span>
+            <span className="section-count">{films.length}</span>
         </div>
         <div className="film-list-filter">
             FAVES
