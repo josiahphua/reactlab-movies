@@ -79,11 +79,10 @@ You should have a list of all the films appear in the left column.
   <summary>Hint - Need help on <code>map</code>?</summary>
   This step will look like this in your <code>render</code> method (above the <code>return</code>):
   
-  <code> 
-    let allFilms = films.map( (film, index) => ( your-jsx-per-film-here )) 
-  </code>
-  
-    Then, you'll just need to call <code>{allFilms}</code> in your JSX where you want the titles to appear.
+     <code>let allFilms = films.map( (film, index) => ( your-jsx-per-film-here ))</code>
+    
+  Then, you'll just need to call <code>{allFilms}</code> in your JSX where you want the titles to appear.
+   
 </details>
 
 
