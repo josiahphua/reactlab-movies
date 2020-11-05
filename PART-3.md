@@ -29,6 +29,7 @@ import FilmListing from './FilmListing.js';
 import TMDB from './TMDB.js';
 
 function App () {
+    const [faves, setFaves] = useState([])
     return (
       <div className="App" >
         <div className="film-library">
@@ -89,10 +90,10 @@ function handleClick(e) {
   console.log('Handling Fave click!')
 
   // Add this line. You'll call the function passed through props
-  this.props.onFaveToggle()
+  props.onFaveToggle()
 
   // Delete the `setState` line. You no longer track state here
-  // this.setState({isFave: !this.state.isFave})
+  // setIsFave(!isFave)
 }
 ```
 
@@ -158,7 +159,7 @@ To add a new film to the `faves` array, just [push](https://developer.mozilla.or
 Now that you have updated the `faves` array, you need to call `setState` so React will re-render the appropriate components in the tree. You can make this very succinct by using object literal shorthand. It should look like this:
 
 ```js
-setFave({faves})
+setFave((f) => ({faves}))
 
 // The above is exactly the same as this.setState({faves: faves})
 ```
