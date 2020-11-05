@@ -17,19 +17,18 @@ To do this, you'll need to move your state up to the top of the component tree s
 
 Your `App` component will be the main place where states are set. From here, these states can be passed as props down to the other components.
 
-#### Step 1: Import `{ Component }` to `App.js`
+#### Step 1: Import `{ useState }` to `App.js`
 
 To have access to `state`, we need to refactor `App.js` into a proper class Component. It should look like this:
 
 ```js
-import React, { Component } from 'react';
+import React from 'react';
 import './App.css';
 import FilmDetails from './FilmDetails.js';
 import FilmListing from './FilmListing.js';
 import TMDB from './TMDB.js';
 
-class App extends Component {
-  render() {
+function App () {
     return (
       <div className="App" >
         <div className="film-library">
@@ -38,7 +37,6 @@ class App extends Component {
         </div>
       </div>
     );
-  }
 }
 
 export default App;
@@ -86,7 +84,7 @@ Change `handleClick` as follows:
 ```js
 # /src/Fave.js
 
-handleClick(e) {
+function handleClick(e) {
   e.stopPropagation()
   console.log('Handling Fave click!')
 
@@ -160,7 +158,7 @@ To add a new film to the `faves` array, just [push](https://developer.mozilla.or
 Now that you have updated the `faves` array, you need to call `setState` so React will re-render the appropriate components in the tree. You can make this very succinct by using object literal shorthand. It should look like this:
 
 ```js
-this.setState({faves})
+setFave({faves})
 
 // The above is exactly the same as this.setState({faves: faves})
 ```
