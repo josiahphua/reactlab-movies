@@ -1,6 +1,6 @@
 # ![](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) Starting a Film Project
 
-1. Start by running `create-react-app reactfilm`
+1. Start by running `npx create-react-app reactfilm`
 1. Copy and replace your `index.css` with the one in this project
 1. Copy the `normalize.css` into your project `src` directory
 1. Include your `normalize.css` into the `index.js`
