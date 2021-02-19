@@ -182,7 +182,7 @@ Note: It will be easier to read if you determine which class to set first, store
 
 <details>
   <summary>Hint - a more advanced and succinct way to write this function could be:</summary>
-  <code>const isFave = (isFave) ? 'remove_from_queue' : 'add_to_queue'</code>
+  <code>{(isFave) ? 'remove_from_queue' : 'add_to_queue'}</code>
 
   You can drop this in the <code>render</code> method. This checks the current <code>isFave</code> state for true or false.
 
