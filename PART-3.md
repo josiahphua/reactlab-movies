@@ -175,7 +175,7 @@ To make this happen, you won't simply pass the function down to `FilmRow` as a p
 In the `FilmListing` component's `render` method, add the `onFaveToggle` variable. Replace your existing `map` function with this:
 
 ```js
-const allFilms = this.props.films.map((film) => {
+const allFilms = props.films.map((film) => {
   return (
   <FilmRow
   film={film}
